@@ -1,0 +1,854 @@
+:root {
+  --color-bg: #fff;
+  --color-fg: #111;
+  --color-accent: #B1001E;
+  --radius: 6px;
+  --font-main: 'Inter', sans-serif;
+  --font-heading: 'Playfair Display', serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-main);
+  background: var(--color-bg);
+  color: var(--color-fg);
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1 1 auto;
+}
+
+footer {
+  margin-top: auto;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+}
+
+
+
+
+
+/* Header */
+.header {
+  padding: 1rem 2rem;
+  text-align: center;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+}
+
+.logo img {
+  height: 40px;
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  padding: 3rem 1rem;
+}
+
+.hero .slider {
+  position: relative;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.hero .slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.hero .slide video {
+  width: 100%;
+  border-radius: 6px;
+  max-height: 60vh;
+  object-fit: cover;
+}
+
+.hero .slide.active {
+  position: relative;
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 1;
+}
+
+
+/* Кнопки слайдера */
+.slider .prev,
+.slider .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--color-accent);
+  color: #fff;
+  border: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  font-size: 1.25rem;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: 0.3s ease;
+}
+
+.slider .prev:hover,
+.slider .next:hover {
+  background: #000;
+  transform: translateY(-50%) scale(1.05);
+}
+
+.slider .prev {
+  left: 1rem;
+}
+
+.slider .next {
+  right: 1rem;
+}
+
+/* Кнопка "Оставить заявку" */
+.cta-button {
+  margin-top: 2rem;
+}
+
+.cta-button a {
+  background: var(--color-accent);
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius);
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+  transition: 0.3s ease;
+}
+
+.cta-button a:hover {
+  background: #000;
+  transform: translateY(-2px);
+}
+
+
+/* Секция */
+.services {
+  margin-top: 1rem; 
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+.services h2 {
+  font-size: 2rem;
+  margin-bottom: -5rem;
+  margin-top: 1rem;
+}
+
+/* Фильтры */
+.filter-tabs {
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.filter-tabs button {
+  padding: 0.5rem 1.25rem;
+  border-radius: var(--radius);
+  border: 1px solid #ccc;
+  background: #fff;
+  color: #333;
+  cursor: pointer;
+  transition: 0.3s;
+  white-space: nowrap;
+}
+
+.filter-tabs button.active {
+  background: var(--color-accent);
+  color: white;
+  border-color: var(--color-accent);
+}
+
+.video-slider {
+  position: relative;
+  max-width: 960px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.video-track {
+  position: relative;
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Каждое видео как слайд */
+.video-slide {
+  display: none;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.4s ease;
+}
+
+/* Показываем активный */
+.video-slide.active {
+  display: flex;
+}
+
+/* Видео внутри */
+.video-slide video {
+  display: block;
+  max-width: 100%;
+  max-height: 90vh;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  object-fit: contain;
+}
+
+/* Кнопки слайдера */
+.video-prev,
+.video-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--color-accent);
+  color: #fff;
+  border: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  font-size: 1.25rem;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: 0.3s ease;
+}
+
+.video-prev:hover,
+.video-next:hover {
+  background: #000;
+  transform: translateY(-50%) scale(1.05);
+}
+
+.video-prev {
+  left: 1rem;
+}
+
+.video-next {
+  right: 1rem;
+}
+.video-wrapper {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  transition: all 0.6s ease;
+  aspect-ratio: 16 / 9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.video-wrapper.vertical {
+  aspect-ratio: 9 / 16;
+  max-width: 420px;
+}
+
+.video-wrapper video {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  object-fit: contain;
+}
+/* По умолчанию — обычное поведение */
+.video-prev,
+.video-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: all 0.5s ease;
+}
+
+/* Адаптация кнопок для вертикальных видео */
+.video-slide.active .video-wrapper.vertical ~ .video-prev,
+.video-slide.active .video-wrapper.vertical ~ .video-next {
+  top: 45%;
+  transform: translateY(-50%);
+  /* Смещаем ближе к центру, т.к. видео уже уже */
+}
+
+.video-slider.vertical-mode .video-prev {
+  left: calc(50% - 260px); /* Центр - половина ширины видео - отступ */
+}
+
+.video-slider.vertical-mode .video-next {
+  right: calc(50% - 260px);
+}
+
+
+
+
+
+
+
+
+
+/* Steps */
+.steps {
+  background: transparent;
+  
+  text-align: center;
+  padding-top: 6rem; /* или больше при необходимости */
+}
+
+.step-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.step-block {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: 0.3s ease;
+  backdrop-filter: blur(6px);
+}
+
+.step-block:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
+}
+
+.step-num {
+  width: 50px;
+  height: 50px;
+  background: var(--color-accent);
+  color: #fff;
+  font-weight: bold;
+  border-radius: 50%;
+  line-height: 50px;
+  text-align: center;
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.step-text h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.15rem;
+  color: #111;
+}
+
+.step-text p {
+  font-size: 0.95rem;
+  color: #444;
+}
+#steps h2 {
+  margin-bottom: 3rem;
+}
+
+
+/* Clients */
+.clients {
+
+  padding: 4rem 1rem;
+  text-align: center;
+}
+
+.clients h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.logo-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+.client-logo img {
+  height: 60px;
+  max-width: 160px;
+  object-fit: contain;
+}
+
+/* Contacts */
+.contacts {
+ 
+  padding: 5rem 1rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contacts h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.contact-box {
+background: #fff;
+  padding: 2.5rem 2rem;
+  border-radius: var(--radius);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  max-width: 420px;
+  width: 100%;
+}
+
+.contact-box form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.contact-box input[type="text"],
+.contact-box input[type="tel"] {
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: var(--radius);
+  transition: 0.3s ease;
+  text-align: center;
+}
+
+.contact-box input.error {
+  border-color: red;
+  animation: shake 0.3s;
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  50% { transform: translateX(4px); }
+  75% { transform: translateX(-4px); }
+  100% { transform: translateX(0); }
+}
+
+.checkbox-label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: #444;
+}
+
+.contact-box button {
+  background: var(--color-accent);
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: 0.3s ease;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.contact-box button:hover {
+  background: #000;
+}
+
+/* Footer */
+.footer {
+  background: #111;
+  color: #eee;
+  padding: 3rem 1rem 1rem;
+}
+
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 2rem;
+  margin-bottom: 1rem;
+}
+
+.footer-col h4 {
+  margin-bottom: 0.75rem;
+  color: #fff;
+  font-size: 1rem;
+}
+
+.footer-col a {
+  color: #ffffff;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.footer-col a:hover {
+  color: var(--color-accent);
+}
+
+.footer-bottom {
+  text-align: center;
+  font-size: 0.85rem;
+  color: #777;
+  border-top: 1px solid #333;
+  padding-top: 1rem;
+}
+
+.scroll-gradient-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(135deg, #ff5353, #e0e0ff, #fff0f5, #2283b1);
+  background-size: 400% 400%;
+  background-position: 0% 50%;
+  transition: background-position 0.2s ease-out;
+}
+
+
+
+
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+.social-icons a {
+  font-size: 1.75rem;
+  color: #ffffff;
+  transition: 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: var(--color-accent);
+  transform: scale(1.1);
+}
+
+
+
+
+
+@keyframes bgMove {
+  0%   { background-position: 0% 50%; }
+  25%  { background-position: 50% 100%; }
+  50%  { background-position: 100% 50%; }
+  75%  { background-position: 50% 0%; }
+  100% { background-position: 0% 50%; }
+}
+
+
+
+.hero,
+.services,
+.steps,
+.clients,
+.contacts {
+  background: transparent;
+}
+
+
+.gallery {
+  padding: 4rem 1rem;
+  text-align: center;
+}
+
+.gallery h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.gallery-track {
+  display: flex;
+  overflow-x: auto;
+  gap: 1rem;
+  padding: 1rem;
+  scrollbar-color: var(--color-accent) transparent;
+  scrollbar-width: thin;
+}
+
+.gallery-track::-webkit-scrollbar {
+  height: 8px;
+}
+.gallery-track::-webkit-scrollbar-thumb {
+  background: var(--color-accent);
+  border-radius: 4px;
+}
+
+.gallery-track img {
+  max-height: 200px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  object-fit: cover;
+}
+
+.gallery-track img:hover {
+  transform: scale(1.05);
+}
+
+/* Lightbox */
+.lightbox {
+  display: none; /* ← скрыто по умолчанию */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.95);
+  justify-content: center;
+  align-items: center;
+  z-index: 99999; /* ← выше всего */
+}
+
+.lightbox.open {
+  display: flex; /* ← появляется */
+}
+
+.lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 8px;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 1rem;
+  right: 2rem;
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+}
+
+.lightbox-prev,
+.lightbox-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: none;
+  font-size: 2rem;
+  padding: 0.75rem 1.25rem;
+  border-radius: 8px;
+  cursor: pointer;
+  z-index: 10;
+  transition: 0.3s ease;
+}
+
+.lightbox-prev:hover,
+.lightbox-next:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.lightbox-prev {
+  left: 1rem;
+}
+
+.lightbox-next {
+  right: 1rem;
+}
+
+
+
+
+
+
+
+
+@keyframes waveLoop {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+
+/* Адаптив */
+@media (max-width: 768px) {
+  .video-box {
+    flex: 1 1 100%;
+  }
+
+  .step-block {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .filter-tabs {
+    flex-direction: row;
+    overflow-x: auto;
+    gap: 0.5rem;
+    padding-bottom: 1rem;
+    -webkit-overflow-scrolling: touch;
+    justify-content: flex-start;
+  }
+
+  .filter-tabs button {
+    flex: 0 0 auto;
+    white-space: nowrap;
+    font-size: 0.95rem;
+    padding: 0.4rem 1rem;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .logo-center {
+    gap: 2rem;
+  }
+
+  .social-icons {
+    gap: 2rem;
+    margin-top: 1.5rem;
+  }
+
+  .social-icons a {
+    font-size: 2rem;
+  }
+
+  .footer-col {
+    text-align: center;
+  }
+
+  .video-wrapper {
+    max-width: 100%;
+    padding: 0 1rem;
+    aspect-ratio: 16 / 9;
+  }
+
+  .video-wrapper.vertical {
+    aspect-ratio: 9 / 16;
+    max-width: 100%;
+  }
+
+  .video-prev,
+  .video-next {
+    font-size: 1.2rem;
+    width: 40px;
+    height: 40px;
+    padding: 0.4rem;
+    transition: all 0.3s ease;
+  }
+
+  .video-slider.vertical-mode .video-prev {
+    left: 1rem;
+  }
+
+  .video-slider.vertical-mode .video-next {
+    right: 1rem;
+  }
+
+
+  
+  section {
+    padding: 2rem 1rem;
+  }
+  
+  section h2 {
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    margin-top: 0;
+    line-height: 1.4;
+    word-break: break-word;
+  }
+  .services h2 {
+    margin-bottom: -5rem; /* вместо -5rem или 5rem */
+  }
+  
+  /* --- Фикс для секции клиентов --- */
+  .clients {
+    padding-top: 3.5rem;
+  }
+  .clients h2 {
+    margin-bottom: 1.5rem;
+  }
+  
+  /* --- Фикс для галереи --- */
+  .gallery {
+    padding-top: 3rem;
+  }
+  .gallery h2 {
+    margin-bottom: 1.5rem;
+  }
+  
+  /* --- Фикс для контактов --- */
+  .contacts {
+    padding-top: 3rem;
+  }
+  .contacts h2 {
+    margin-bottom: 1.5rem;
+  }
+  .contact-box {
+    padding: 1.5rem;
+    background-color: #fff;
+    border-radius: 8px;
+  }
+  
+  /* Чтобы форма не налезала на заголовок */
+  .contact-box form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .contact-box input,
+  .contact-box button {
+    font-size: 1rem;
+  }
+  .scroll-gradient-bg {
+    background-size: 600% 600%;
+    background-position: 50% 0%;
+  }
+  
+}
